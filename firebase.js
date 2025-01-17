@@ -45,10 +45,18 @@ if (loginForm) {
         const password = document.getElementById('password').value;
 
         try {
+            // Attempt to log in
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
             alert(`Login successful! Welcome back, ${userCredential.user.email}`);
         } catch (error) {
-            alert(`Error: ${error.message}`);
+            // Handle login errors
+            if (error.code === 'auth/user-not-found') {
+                alert('Error: No user found with this email address.');
+            } else if (error.code === 'auth/wrong-password') {
+                alert('Error: Incorrect password. Please try again.');
+            } else {
+                alert(`Error: ${error.message}`);
+            }
             console.error(error);
         }
     });
