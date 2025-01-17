@@ -1,4 +1,4 @@
-// Import the functions you need from the SDKs
+// Import Firebase modules
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
@@ -17,7 +17,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-// Register Functionality
+// Handle Registration
 const registerForm = document.getElementById('registerForm');
 if (registerForm) {
     registerForm.addEventListener('submit', async (event) => {
@@ -36,7 +36,7 @@ if (registerForm) {
     });
 }
 
-// Login Functionality
+// Handle Login
 const loginForm = document.getElementById('loginForm');
 if (loginForm) {
     loginForm.addEventListener('submit', async (event) => {
